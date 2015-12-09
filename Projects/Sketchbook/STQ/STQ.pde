@@ -16,6 +16,7 @@ void setup() {
 }
 
 void draw() {
+  textSize(48);
   if(stage == -1) {
     splash();
   }
@@ -23,14 +24,22 @@ void draw() {
   if(stage == 0) {
     menu();
   }
+  
+  if(stage == 1) {
+    help();
+  }
+  
+  if(stage == 2) {
+    play();
+  }
 }
 
-void splash() { // Will be on for 6 seconds (Really 5.96), Implemented a developer switch to save time
-if(!devSplash) {
-  background(splashColor, splashColor, splashColor);
-  if(splashColor == 179) stage = 0;
-  splashColor++;
-} else stage = 0;
+void keyPressed() {
+  if(keyCode == ENTER) {
+    if(stage == 1) {
+      stage = 0;
+    }
+  }
 }
 
 void mousePressed() {
@@ -43,6 +52,32 @@ void mousePressed() {
     cursor(ARROW);
     stage = 1;
   }
+}
+
+void play() {
+  
+}
+
+void help() {
+  background(179, 179, 179);
+  fill(255, 255, 255);
+  textAlign(CENTER);
+  textSize(48);
+  text("Help", 300, 50);
+  
+  textSize(20);
+  text("Use the up and down arrow keys to aim the cannon.", 300, 150);
+  text("When you hit an image, it will give you a fact.", 300, 200);
+  text("After you get all the facts, the level will end.", 300, 250);
+  text("Press enter to exit", 300, 350);
+}
+
+void splash() { // Will be on for 6 seconds (Really 5.96), Implemented a developer switch to save time
+if(!devSplash) {
+  background(splashColor, splashColor, splashColor);
+  if(splashColor == 179) stage = 0;
+  splashColor++;
+} else stage = 0;
 }
 
 void menu() {
@@ -59,16 +94,15 @@ void detectOverlay() { // Detects if the mouse is over a button and shows an ove
 inMenuPlay = false;
 inMenuHelp = false;
     if (mouseX > 195 && mouseX < 395 && mouseY > 90 && mouseY < 190) { // Play Button
-      fill(0, 240, 240);
-      strokeWeight(30);
+      fill(0, 255, 255);
+      strokeWeight(15);
       stroke(0, 240, 0);
 
       // PLAY
       rect(195, 90, 200, 100, 20);
 
-      fill(240, 0, 0);
-
       // PLAY
+      fill(255, 0, 0);
       text("Play", 290, 150);
 
       cursor(HAND);
@@ -76,16 +110,15 @@ inMenuHelp = false;
     }
 
     if (mouseX > 195 && mouseX < 395 && mouseY > 250 && mouseY < 350) { // Help Button
-      fill(0, 240, 240);
-      strokeWeight(30);
+      fill(0, 255, 255);
+      strokeWeight(15);
       stroke(0, 240, 0);
 
       // HELP
       rect(195, 250, 200, 100, 20);
 
-      fill(240, 0, 0);
-
       // HELP
+      fill(255, 0, 0);
       text("Help", 290, 310);
 
       cursor(HAND);
@@ -94,7 +127,7 @@ inMenuHelp = false;
 }
 
 void drawButtons() {
-  strokeWeight(15);
+  strokeWeight(5);
   stroke(0, 255, 0);
   fill(0, 255, 255);
   
