@@ -35,13 +35,45 @@ void menu() {
   textAlign(CENTER);
   fill(255, 255, 255);
  text("Shoot the Question?", 300, 50);
- 
+ cursor(ARROW);
  drawButtons();
  detectOverlay();
 }
 
-void detectOverlay() {
-  
+void detectOverlay() { // Detects if the mouse is over a button and shows an overlay.
+
+    if (mouseX > 195 && mouseX < 395 && mouseY > 90 && mouseY < 190) { // Play Button
+      fill(0, 240, 240);
+      strokeWeight(30);
+      stroke(0, 240, 0);
+
+      // PLAY
+      rect(195, 90, 200, 100, 20);
+
+      fill(240, 0, 0);
+
+      // PLAY
+      text("Play", 290, 150);
+
+      cursor(HAND);
+      
+    }
+
+    if (mouseX > 195 && mouseX < 395 && mouseY > 250 && mouseY < 350) { // Help Button
+      fill(0, 240, 240);
+      strokeWeight(30);
+      stroke(0, 240, 0);
+
+      // HELP
+      rect(195, 250, 200, 100, 20);
+
+      fill(240, 0, 0);
+
+      // HELP
+      text("Help", 290, 310);
+
+      cursor(HAND);
+    }
 }
 
 void drawButtons() {
