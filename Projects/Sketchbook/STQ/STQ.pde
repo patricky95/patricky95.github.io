@@ -1,0 +1,62 @@
+public int stage = -1; //Stage -1 = Splashscreen, Stage 0 = Menu, Stage 1 = Help, Stage 2 = Game, Stage 3 = Next Level, Stage 4 = Game Over, Stage 5 = End of Game
+
+boolean devSplash = true; //Switch for developers to save time
+int splashColor = 0;
+
+void setup() {
+  PFont font;
+  font = loadFont("CustomFont.vlw");
+  textFont(font);
+  size(600, 400);
+  background(0, 0, 0);
+  frameRate(30);
+}
+
+void draw() {
+  if(stage == -1) {
+    splash();
+  }
+  
+  if(stage == 0) {
+    menu();
+  }
+}
+
+void splash() { // Will be on for 6 seconds (Really 5.96), Implemented a developer switch to save time
+if(!devSplash) {
+  background(splashColor, splashColor, splashColor);
+  if(splashColor == 179) stage = 0;
+  splashColor++;
+} else stage = 0;
+}
+
+void menu() {
+  background(179, 179, 179);
+  textAlign(CENTER);
+  fill(255, 255, 255);
+ text("Shoot the Question?", 300, 50);
+ 
+ drawButtons();
+ detectOverlay();
+}
+
+void detectOverlay() {
+  
+}
+
+void drawButtons() {
+  strokeWeight(15);
+  stroke(0, 255, 0);
+  fill(0, 255, 255);
+  
+  //Play Button
+  rect(195, 90, 200, 100, 20); //Please note: text should be 60 pixels down with these rectangle sizes
+  fill(0, 0, 255);
+  text("Play", 290, 150);
+  
+   fill(0, 255, 255);
+  //Help Button
+  rect(195, 250, 200, 100, 20);
+   fill(0, 0, 255);
+   text("Help", 290, 310);
+}
