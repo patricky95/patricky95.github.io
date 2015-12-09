@@ -23,12 +23,21 @@ void draw() {
   if(stage == 0) {
     menu();
   }
-if(stage == 1) {
-helpMenu();
-}
+  
+  if(stage == 1) {
+    helpMenu();
+  }
+  
+  if(stage == 2) {
+    game();
+  }
 }
 
 void helpMenu() {
+
+}
+
+void game() {
 
 }
 
