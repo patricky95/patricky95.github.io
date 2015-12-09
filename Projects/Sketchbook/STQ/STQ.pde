@@ -34,7 +34,9 @@ void draw() {
 }
 
 void helpMenu() {
-
+background(179, 179, 179);
+rect(100, 100, 400, 200, 5);
+text("Help", 200, 200);
 }
 
 void game() {
