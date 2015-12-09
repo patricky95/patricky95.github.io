@@ -23,6 +23,13 @@ void draw() {
   if(stage == 0) {
     menu();
   }
+if(stage == 1) {
+helpMenu();
+}
+}
+
+void helpMenu() {
+
 }
 
 void splash() { // Will be on for 6 seconds (Really 5.96), Implemented a developer switch to save time
