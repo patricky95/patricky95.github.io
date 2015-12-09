@@ -34,6 +34,10 @@ void draw() {
   }
 }
 
+void game() {
+
+}
+
 void keyPressed() {
   if(keyCode == ENTER) {
     if(stage == 1) {
