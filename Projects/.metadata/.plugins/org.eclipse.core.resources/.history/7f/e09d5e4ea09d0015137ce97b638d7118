@@ -1,0 +1,13 @@
+package shootthequestion;
+
+import processing.core.PApplet;
+
+
+public class ShootTheQuestion extends PApplet {
+
+	public void setup() {
+	}
+
+	public void draw() {
+	}
+}
