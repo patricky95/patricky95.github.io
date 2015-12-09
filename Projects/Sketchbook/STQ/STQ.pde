@@ -1,6 +1,9 @@
 public int stage = -1; //Stage -1 = Splashscreen, Stage 0 = Menu, Stage 1 = Help, Stage 2 = Game, Stage 3 = Next Level, Stage 4 = Game Over, Stage 5 = End of Game
 
 boolean devSplash = true; //Switch for developers to save time
+
+boolean inMenuHelp, inMenuPlay; //To check when the cursor is in the button frame
+
 int splashColor = 0;
 
 void setup() {
@@ -30,6 +33,18 @@ if(!devSplash) {
 } else stage = 0;
 }
 
+void mousePressed() {
+  if(inMenuPlay) {
+    cursor(ARROW);
+    stage = 2;
+  }
+  
+  if(inMenuHelp) {
+    cursor(ARROW);
+    stage = 1;
+  }
+}
+
 void menu() {
   background(179, 179, 179);
   textAlign(CENTER);
@@ -41,7 +56,8 @@ void menu() {
 }
 
 void detectOverlay() { // Detects if the mouse is over a button and shows an overlay.
-
+inMenuPlay = false;
+inMenuHelp = false;
     if (mouseX > 195 && mouseX < 395 && mouseY > 90 && mouseY < 190) { // Play Button
       fill(0, 240, 240);
       strokeWeight(30);
@@ -56,7 +72,7 @@ void detectOverlay() { // Detects if the mouse is over a button and shows an ove
       text("Play", 290, 150);
 
       cursor(HAND);
-      
+      inMenuPlay = true;
     }
 
     if (mouseX > 195 && mouseX < 395 && mouseY > 250 && mouseY < 350) { // Help Button
@@ -73,6 +89,7 @@ void detectOverlay() { // Detects if the mouse is over a button and shows an ove
       text("Help", 290, 310);
 
       cursor(HAND);
+      inMenuHelp = true;
     }
 }
 
