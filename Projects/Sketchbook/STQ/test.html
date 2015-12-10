@@ -39,10 +39,6 @@ void draw() {
   }
 }
 
-void game() {
-
-}
-
 void keyPressed() {
   if(keyCode == ENTER) {
     if(stage == 1) {
@@ -64,7 +60,22 @@ void mousePressed() {
 }
 
 void play() {
+   background(245, 245, 245);
+   drawCannon();
+}
+
+void drawCannon() {
+  int realX;
+  int realY;
   
+  //Draw the cannon
+  int x, y = 0;
+  realX = 5;
+  realY = 350;
+  noStroke();
+  fill(179, 179, 179);
+  rect(realX, realY, 100, 50);
+  rect(realX + 10, realY - 25, 80, 25);
 }
 
 void help() {
