@@ -78,10 +78,8 @@ void drawCannon() {
   rect(realX + 10, realY - 25, 80, 25);
   
   //Draw the barrel
-  pushMatrix();
   rect(realX + 80, realY, 100, 20);
-  rotate(PI);
-  popMatrix();
+  rotate(PI * 2);
 }
 
 void help() {
