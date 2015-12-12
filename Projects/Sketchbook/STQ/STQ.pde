@@ -5,6 +5,7 @@ boolean devSplash = true; //Switch for developers to save time
 boolean inMenuHelp, inMenuPlay; //To check when the cursor is in the button frame
 
 int splashColor = 0;
+int barrelRotation = 0;
 
 void setup() {
   PFont font;
@@ -40,6 +41,20 @@ void keyPressed() {
       stage = 0;
     }
   }
+  
+  if(keyCode == UP) {
+    if(barrelRotation <= 75) // Gives 18 possible positions for firing (Going up)
+    barrelRotation += 5;
+  }  
+  if(keyCode == DOWN) {
+    if(barrelRotation >= 0) // Gives 18 possible positions for firing (Going down)
+    barrelRotation -= 5;
+  }
+  if(stage == 2) {
+  if(keyCode == 32) {
+    //For code when you have to fire in game
+  }
+  }
 }
 
 void mousePressed() {
@@ -71,6 +86,12 @@ void drawCannon() {
   fill(179, 179, 179);
   rect(realX, realY, 100, 50);
   rect(realX + 10, realY - 25, 80, 25);
+  
+  //Drawing the barrel
+  strokeWeight(20);
+  stroke(179, 179, 179);
+  fill(179, 179, 179);
+  line(realX + 80, realY, (realX + 80) + 90 - barrelRotation, realY - barrelRotation);
 }
 
 void help() {
@@ -84,7 +105,7 @@ void help() {
   text("Use the up and down arrow keys to aim the cannon.", 300, 150);
   text("When you hit an image, it will give you a fact.", 300, 200);
   text("After you get all the facts, the level will end.", 300, 250);
-  text("Press enter to exit", 300, 350);
+  text("Press enter to exit and hit space to fire!", 300, 350);
 }
 
 void splash() { // Will be on for 6 seconds (Really 5.96), Implemented a developer switch to save time
