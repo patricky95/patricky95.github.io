@@ -1,8 +1,19 @@
+import fisica.*;
+
 public int stage = -1; //Stage -1 = Splashscreen, Stage 0 = Menu, Stage 1 = Help, Stage 2 = Game, Stage 3 = Next Level, Stage 4 = Game Over, Stage 5 = End of Game
 
 boolean devSplash = true; //Switch for developers to save time
 
 boolean inMenuHelp, inMenuPlay; //To check when the cursor is in the button frame
+
+String factArray[] = {"15 people built Asia", "I have a nose"};
+
+boolean launch = false; //Used for launching question
+
+int launchX = 0;
+int launchY = 0;
+
+int a = 100;
 
 int splashColor = 0;
 int barrelRotation = 0;
@@ -32,6 +43,17 @@ void draw() {
   
   if(stage == 2) {
     play();
+    
+    drawBoxes((int) random(1, 5));
+    
+    if(launch) {
+      if(a <= 450) {
+      launchQuestion(a, launchY);
+      int index = (int) random(2);
+       raiseFact(300, 350, index);
+      a += 4;
+      } else launch = false;
+    }
   }
 }
 
@@ -53,6 +75,8 @@ void keyPressed() {
   if(stage == 2) {
   if(keyCode == 32) {
     //For code when you have to fire in game
+    if(!launch) launch = true;
+    
   }
   }
 }
@@ -92,6 +116,8 @@ void drawCannon() {
   stroke(179, 179, 179);
   fill(179, 179, 179);
   line(realX + 80, realY, (realX + 80) + 90 - barrelRotation, realY - barrelRotation);
+  launchX = 90 - barrelRotation;
+  launchY = realY - barrelRotation;
 }
 
 void help() {
@@ -105,6 +131,7 @@ void help() {
   text("Use the up and down arrow keys to aim the cannon.", 300, 150);
   text("When you hit an image, it will give you a fact.", 300, 200);
   text("After you get all the facts, the level will end.", 300, 250);
+  text("If you move your barrel while it flies, it follows!", 300, 300);
   text("Press enter to exit and hit space to fire!", 300, 350);
 }
 
@@ -178,3 +205,30 @@ void drawButtons() {
    fill(0, 0, 255);
    text("Help", 290, 310);
 }
+
+  void launchQuestion(int x, int y) {
+      textSize(40);
+      fill(0);
+      text("?", x, y);
+      if(x == 448) {
+        launch = false;
+        a = 100;
+      }
+  }
+  
+  void raiseFact(int boxX, int boxY, int index) {
+    int y = boxY;
+    String fact = factArray[index];
+    
+    textSize(20);
+    fill(0, 0, 0);
+    
+    if(y > 10) {
+    text(fact, boxX + 30, y);
+    y--;
+    }
+  }
+  
+  void drawBoxes(int sequence) {
+    
+  }
